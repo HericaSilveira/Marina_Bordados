@@ -12,7 +12,7 @@ export const ButtonComponent = ({
   block,
   textOnlyXs = false,
 }) => {
-  let _text = text.length > 0 && icon != null ? `${text}  ` : text;
+  let _text = text && icon ? `${text}  ` : text;
   return (
     <>
       <Button

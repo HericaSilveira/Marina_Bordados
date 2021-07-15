@@ -1,4 +1,3 @@
-
 export const NAME_APP = 'Bordados Marina';
 
 export async function getProductsMeLi(criterio) {
