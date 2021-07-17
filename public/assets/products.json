@@ -1,0 +1,23 @@
+[
+{   "id": 1,
+    "¨category¨": "Bebés y niños",
+    "¨title¨": "Porta chupetes",
+    "¨price¨": 825,
+    "¨stock¨": 4,
+    "¨img¨": "../assets/Img/porta_chupetes.png"
+},
+{   "id": 2,
+    "¨category¨": "Hogar",
+    "¨title¨": "Almohadón",
+    "¨price¨": 900,
+    "¨stock¨": 10,
+    "¨img¨": "../assets/Img/almohadon.png"
+},
+{   "id": 3,
+    "¨category¨": "Logos",
+    "¨title¨": "Logo para liceo",
+    "¨price¨": 3500,
+    "¨stock¨": 0,
+    "¨img¨": "../assets/Img/logo.png"
+}
+]
