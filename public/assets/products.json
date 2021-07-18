@@ -1,23 +1,28 @@
-[
-{   "id": 1,
-    "¨category¨": "Bebés y niños",
-    "¨title¨": "Porta chupetes",
-    "¨price¨": 825,
-    "¨stock¨": 4,
-    "¨img¨": "../assets/Img/porta_chupetes.png"
-},
-{   "id": 2,
-    "¨category¨": "Hogar",
-    "¨title¨": "Almohadón",
-    "¨price¨": 900,
-    "¨stock¨": 10,
-    "¨img¨": "../assets/Img/almohadon.png"
-},
-{   "id": 3,
-    "¨category¨": "Logos",
-    "¨title¨": "Logo para liceo",
-    "¨price¨": 3500,
-    "¨stock¨": 0,
-    "¨img¨": "../assets/Img/logo.png"
-}
+[{
+        "id": 1,
+        "¨category¨": "Bebés y niños",
+        "¨title¨": "Porta chupetes",
+        "¨description": "Porta chupetes con diseño de animales y el nombre de tu bebé",
+        "¨price¨": 825,
+        "¨stock¨": 4,
+        "¨img¨": "https://i.pinimg.com/564x/86/71/79/867179afac644d368936dc28b5afc796.jpg"
+    },
+    {
+        "id": 2,
+        "¨category¨": "Hogar",
+        "¨title¨": "Almohadón",
+        "¨description": "Almohadón con diseño conejito o el que tú elijas.",
+        "¨price¨": 900,
+        "¨stock¨": 10,
+        "¨img¨": "https://i.pinimg.com/564x/ea/df/6d/eadf6da1bc97c947909cfad1179fe5da.jpg"
+    },
+    {
+        "id": 3,
+        "¨category¨": "Logos",
+        "¨title¨": "Logo para liceo",
+        "¨description": "Logos bordados para los uniformes del colegio",
+        "¨price¨": 3500,
+        "¨stock¨": 0,
+        "¨img¨": "./images/logo.png"
+    }
 ]
