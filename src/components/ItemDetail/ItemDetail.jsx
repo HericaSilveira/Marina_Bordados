@@ -1,18 +1,22 @@
+import { useState } from "react";
 import { Badge, Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ButtonComponent } from "../Buttons/Button";
 import accounting from "accounting";
 import "./styles.scss";
 
-export const ItemDetail = ({ product, onAdd }) => {
+export const ItemDetail = ({ product, onAddToCart }) => {
+  const [confirm, setConfirm] = useState(false);
+  function onAdd(c) {
+    setConfirm(true);
+    onAddToCart(c);
+  }
   return (
     <Container className="itemDetail">
       <Row noGutters>
         <Col className="py-2 px-4" lg={4} md={6} sm={4}>
-          <Row>
-            <Col>
-              <Badge variant="success">{product.category}</Badge>
-            </Col>
-          </Row>
           <Row>
             <Col>
               <img
@@ -25,7 +29,7 @@ export const ItemDetail = ({ product, onAdd }) => {
             </Col>
           </Row>
         </Col>
-        <Col className="py-2 px-4" lg={8} md={6} sm={8}>
+        <Col className="px-4" lg={8} md={6} sm={8}>
           <Row className="mt-4">
             <Col md={8}>
               <h3>{product.title}</h3>
@@ -46,7 +50,23 @@ export const ItemDetail = ({ product, onAdd }) => {
               <p>Stock: {product.stock} unidades</p>
             </Col>
             <Col lg={6}>
-              <ItemCounter stock={product.stock} initial={1} onAdd={onAdd} />
+              {confirm ? (
+                <Link to={"/cart"} style={{ textDecoration: "none" }}>
+                  <ButtonComponent
+                    text={`Terminar mi compra`}
+                    variant="success"
+                    icon={
+                      <FontAwesomeIcon
+                        icon={"dollar-sign"}
+                        title="Terminar mi compra"
+                      />
+                    }
+                    block={true}
+                  />
+                </Link>
+              ) : (
+                <ItemCounter stock={product.stock} initial={1} onAdd={onAdd} />
+              )}
             </Col>
           </Row>
         </Col>

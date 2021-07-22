@@ -1,40 +1,48 @@
 import { Card, Badge, Row, Col } from "react-bootstrap";
-import { ItemCounter } from "../ItemCounter/ItemCounter";
+import { Link } from "react-router-dom";
 import accounting from "accounting";
 import "./styles.scss";
 
-export const Item = ({ product, onAdd }) => {
+export const Item = ({ product }) => {
   return (
-    <Card key={product.id} text="white" className="mb-2 p-3">
-      <Card.Header>
-        <Row>
-          <Badge variant="success">{product.category}</Badge>
-        </Row>
-        <Row>
-          <Card.Img
-            className="mt-1"
-            variant="top"
-            src={product.img}
-            alt={product.title}
-            title={product.title}
-          />
-        </Row>
-      </Card.Header>
-      <Card.Body>
-        <Row>
-          <Col>
-            <Card.Text>{product.title}</Card.Text>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Card.Text>{accounting.formatMoney(product.price, "$")}</Card.Text>
-          </Col>
-        </Row>
-      </Card.Body>
-      <Card.Footer>
-        <ItemCounter stock={product.stock} initial={1} onAdd={onAdd} />
-      </Card.Footer>
-    </Card>
+    <Link
+      to={`/item/${product.id}`}
+      style={{ color: "#fff", textDecoration: "none" }}
+    >
+      <Card key={product.id} text="white" className="mb-2 p-4">
+        <Card.Header>
+          <Row>
+            <Card.Img
+              className="mt-1"
+              variant="top"
+              src={product.img}
+              alt={product.title}
+              title={product.title}
+            />
+          </Row>
+        </Card.Header>
+        <Card.Body className="pt-2">
+          <Row className="align-items-end">
+            <Col>
+              <Card.Text>{product.title}</Card.Text>
+              <Card.Text>
+                {accounting.formatMoney(product.price, "$")}
+              </Card.Text>
+            </Col>
+            <Col align="right">
+              {product.stock === 0 ? (
+                <Badge className="outOfStock" variant="dark">
+                  Sin stock
+                </Badge>
+              ) : (
+                <Badge className="outOfStock" variant="light">
+                  Stock: {product.stock}{" "}
+                </Badge>
+              )}
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Link>
   );
 };

@@ -29,8 +29,8 @@ export const ItemCounter = ({ stock, initial, onAdd }) => {
                 </Button>
               </InputGroup.Prepend>
               <FormControl
+                id="counter"
                 onChange={manualChange}
-                style={{ textAlign: "center" }}
                 value={counter}
                 placeholder="Stock"
                 aria-label="Stock"
@@ -53,9 +53,7 @@ export const ItemCounter = ({ stock, initial, onAdd }) => {
                   title="Agregar al carrito"
                 />
               }
-              onClick={() => {
-                onAdd(counter);
-              }}
+              onClick={() => onAdd(counter)}
               block={true}
               textOnlyXs={true}
             />
@@ -65,8 +63,8 @@ export const ItemCounter = ({ stock, initial, onAdd }) => {
         <Col>
           <ButtonComponent
             className="mb-2"
-            text="Sin stock."
-            variant="secondary"
+            text="Sin stock"
+            variant="dark"
             block={true}
           />
         </Col>

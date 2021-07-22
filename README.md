@@ -2,6 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## About the project
+
+El presente documento - proyecto se está llevando a cabo en el marco de realización de prácticas del curso ReactJS, de la carrera de Desarrollo FrontEnd, de CoderHouse, por lo que su uso es meramente con fines académicos.
+Para el desarrollo de este proyecto, fue necesario la instalación de las siguientes librerías y frameworks:
+- framework de Bootstrap, optimizado para React (https://react-bootstrap.github.io/).
+- librería de íconos FontAwesome, optimizada para React en las siguientes secciones (https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/react): cart widget, agregar al carrito, eliminar del carrito e ir a confirmación de carrito.
+- extensión de estilos CSS, SASS (https://create-react-app.dev/docs/adding-a-sass-stylesheet/).
+- package de "accounting" para manejar el formato de precios (https://www.npmjs.com/package/accounting).
+- ruteo a fin de obtener navegabilidad en el proyecto mediante la implementación de React Router DOM (https://reactrouter.com/web/guides/quick-start).
+
+{2021-07-21} 
+El proyecto consiste en la realización de un sitio e-commerce, denominado Marina Bordados, mediante el cual se ponen a prueba las aplicaciones de los conocimientos y las técnicas adquiridas para implementar las principales funcionalidades de la dicho sitio.
+Los productos, al igual que las categorías, son obtienen a través del uso del método "await fetch", simulando un request al servidor e incorporando un setTimeout.
+
+Asimismo, se definieron cuatro contenedores, llamados desde la App.jsx:
+- NavBarContainer: se encuentra durante toda la navegación, posee el logo, las categorías (public/assets/categories.json) y el carrito de compras. Los componentes dentro de éste son el "NavBar" y el "CartWidget".
+- ItemListContianer: incluido en la ruta "/" y en "/category/:id", con el fin de mostrar los productos disponibles (public/assets/products.json), y su agrupación por categoría. Lo conforma el componente: "ItemList" que recibe los productos del container e itera por cada uno de ellos, invocando los "Item".
+- ItemDetailContainer: incluido en la ruta "/item/:id" donde se puede visualizar en detalle el producto que se haya seleccionado. Los componentes que lo conforman son: "ItemDetail", que muestra  título, descripción, precio, stock e imagen, e "ItemCounter" que permite agregar un producto al carrito en caso de haber stock (y en caso de no haber disponibilidad se indica la situación), para al final, mostrar el botón de "Terminar mi compra" y así acceder al detalle de los productos incluidos dentro del carrito.
+- ItemCheckoutContainer: incluido en la ruta "/cart" donde se puede ver el detalle de los productos agregados al carrito y el costo total a pagar. Es necesario aclarar que, al momento, el funcionamiento de este contenedor se encuentra aún en desarrollo. Los componentes que lo conforman son: "ItemListCheckout" que recibe los productos que se encuentran en el carrito e itera cada uno de ellos, invocando los "ItemCheckout" que muestra los producto incluidos y el total, y el botón de confirmación de carrito.
+
+Adicionalmente, se crearon dos componentes como ayuda: "Button" para personalizar el botón nativo de React Bootstrap, y "TextOnlyXs", que se utiliza como propiedad para definir que el texto que allí se encuentra se vea solo en resoluciones "xs".
+
 ## Available Scripts
 
 In the project directory, you can run:
