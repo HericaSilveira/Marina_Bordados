@@ -1,4 +1,4 @@
-import { NAME_APP } from "../../utilidades/const";
+import { APP_NAME } from "../../utilidades/const";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget";
@@ -12,8 +12,8 @@ export const NavBar = ({ categories, cart }) => {
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <img
             src={logo}
-            alt={NAME_APP}
-            title={NAME_APP}
+            alt={APP_NAME}
+            title={APP_NAME}
             style={{ maxWidth: 160 }}
             className="mr-2"
           />
@@ -26,7 +26,7 @@ export const NavBar = ({ categories, cart }) => {
                 <Nav.Item className="ml-2" key={cat.id}>
                   <Link
                     to={`/category/${cat.id}`}
-                    style={{ color: "#122333", textDecoration: "none" }}
+                    style={{ color: "#000", textDecoration: "none", textTransform: "uppercase" }}
                   >
                     {cat.name}
                   </Link>

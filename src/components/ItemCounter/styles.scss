@@ -1,7 +1,28 @@
 @import "../../App.scss";
-@media (max-width: 768px) {
-    .form-control {
+.counter {
+    @media (max-width: 768px) {
         padding-left: 0rem;
         padding-right: 0rem;
+    }
+    color: $base-navbar;
+    text-align: center;
+    border-color: $base-navbar;
+    background-color: inherit;
+    &:focus {
+        border-color: $base-navbar;
+        color: $base-navbar;
+        background-color: inherit !important;
+    }
+}
+
+.modifyCounter {
+    border-color: $base-navbar;
+    background-color: inherit !important;
+    color: $base-navbar;
+    width: 35px;
+    &:disabled {
+        border-color: $base-navbar !important;
+        color: $base-navbar !important;
+        background-color: #3c1919 !important;
     }
 }

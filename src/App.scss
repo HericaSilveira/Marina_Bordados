@@ -1,7 +1,25 @@
 $base-background: #f5fcba;
-$base-navbar: hsl(345, 36%, 61%);
-$base-color: #fff;
+$base-navbar: hsl(321, 67%, 91%);
+$base-color: rgb(250, 249, 249);
 body {
     background-color: $base-background;
     color: $base-color;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body,
+#root {
+    display: flex;
+    flex-direction: column;
+    background-color: $base-background;
+    color: $base-color;
+}
+
+.content {
+    flex: 1 0 auto;
 }

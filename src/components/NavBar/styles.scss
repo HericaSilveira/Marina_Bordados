@@ -3,12 +3,12 @@
     background-color: $base-navbar;
 }
 
-.dropdown-menu {
-    background-color: $base-navbar;
-}
-
 .nav-link {
     &:hover {
         color: $base-background !important;
     }
+}
+
+.dropdown-toggle::after {
+    display: none !important;
 }

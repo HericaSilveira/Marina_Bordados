@@ -1,68 +1,62 @@
-import { DATA, CATEGORIES } from "../../utilidades/const";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Alert, Container, Spinner } from "react-bootstrap";
+import { Row, Col, Alert, Container } from "react-bootstrap";
 import { ItemList } from "../../components/ItemList/ItemList";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext/CartContext";
+import "./styles.scss";
 
-export const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState([]);
+export const ItemListContainer = () => {
+  const { products, categories } = useContext(CartContext);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(null);
-
-  const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
   useEffect(() => {
-    setLoaded(false);
-    setFilterProducts([]);
-    setCategory(null);
-    const getItems = async () => {
-      let p, cat;
-      if (products.length !== 0)
-        p = id ? products.filter((p) => p.category === parseInt(id)) : products;
-      else {
-        const response = await fetch(`${DATA}`);
-        let aux = await response.json();
-        p = aux;
-        setProducts(aux);
-      }
-      if (id) {
-        if (categories.length === 0) {
-          const response = await fetch(`${CATEGORIES}`);
-          let aux = await response.json();
-          setCategories(aux);
-        }
-        cat = categories.find((c) => c.id === parseInt(id));
-      }
-      setTimeout(() => {
-        setFilterProducts(p);
-        setCategory(cat);
-        setLoaded(true);
-      }, 1000);
-    };
-    getItems();
+    let cat = id ? categories.find((c) => c.id === parseInt(id)) : null;
+    let p = id ? products.filter((p) => p.category === parseInt(id)) : products;
+    setFilterProducts(p);
+    setCategory(cat);
   }, [id, products, categories]);
 
   return (
     <Container>
-      <h2 className="mb-3">
-        {greeting}
-        {category ? `: ${category.name}` : ""}
-      </h2>
-
-      {loaded ? (
-        filterProducts.length === 0 ? (
-          <Alert variant="danger" align="left" className={"mt-3"}>
-            No hay productos para mostrar.
-          </Alert>
-        ) : (
-          <ItemList data={filterProducts} />
-        )
-      ) : (
-        <div className="d-flex justify-content-center">
-          <Spinner align="center" animation="border" variant="info" />
-        </div>
-      )}
+      <Row>
+        <Col md={3} className="categories d-none d-md-block">
+          <h5 className="mb-3">Categorías</h5>
+          <ul className=" list-unstyled nav-links">
+            <li>
+              <Link to={`/`} style={{ textDecoration: "none" }}>
+                Todos los productos{" "}
+              </Link>
+            </li>
+            {categories.map((cat) => {
+              return (
+                <li key={cat.id}>
+                  <Link
+                    to={`/category/${cat.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {cat.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Col>
+        <Col md={9}>
+          <h2 key={1} className="mb-3">
+            {category ? `${category.name}` : ""}
+          </h2>
+          {filterProducts.length === 0 ? (
+            <Alert key={2} variant="danger" align="left" className={"mt-3"}>
+              No hay productos para mostrar.
+            </Alert>
+          ) : (
+            <ItemList key={2} data={filterProducts} />
+          )}
+        </Col>
+      </Row>
     </Container>
   );
 };

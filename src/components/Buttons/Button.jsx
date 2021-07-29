@@ -10,6 +10,7 @@ export const ButtonComponent = ({
   onClick,
   disabled,
   block,
+  style,
   textOnlyXs = false,
 }) => {
   let _text = text && icon ? `${text}  ` : text;
@@ -23,6 +24,7 @@ export const ButtonComponent = ({
         onClick={onClick}
         disabled={disabled}
         block={block}
+        style={style}
       >
         {textOnlyXs ? <TextOnlyXs text={_text} /> : _text}
         {icon}

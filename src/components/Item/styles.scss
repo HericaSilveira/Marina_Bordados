@@ -3,3 +3,13 @@
     border-color: $base-navbar;
     background-color: #0f1c27;
 }
+
+.itemBadge {
+    position: absolute;
+    right: 29px;
+    bottom: 86px;
+    text-align: center;
+    color: white;
+    padding: 3px 6px;
+    font-size: 12px;
+}

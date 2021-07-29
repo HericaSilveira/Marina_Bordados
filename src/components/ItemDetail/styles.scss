@@ -3,5 +3,15 @@
     border: 1px solid $base-navbar;
     border-radius: .25rem;
     background-color: #0f1c27;
-    padding: 20px;
+    padding: 10px;
+}
+
+.itemDetailBadge {
+    position: absolute;
+    right: 16px;
+    bottom: 1px;
+    text-align: center;
+    color: white;
+    padding: 3px 6px;
+    font-size: 12px;
 }
