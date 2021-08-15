@@ -5,7 +5,7 @@ export const ItemList = ({ data }) => {
   return (
     <Row>
       {data.map((product) => (
-        <Col key={product.id} sm={4}>
+        <Col key={product.id} md={4}>
           <Item product={product} />
         </Col>
       ))}

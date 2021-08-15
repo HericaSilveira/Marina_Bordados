@@ -11,22 +11,22 @@ export const Footer = () => {
           <div className="col-md-4 pr-md-5">
             <Link to={"/"} style={{ textDecoration: "none" }}>
               <img
-                src={"logo-footer.png"}
+                src={"/assets/logo.png"}
                 alt={APP_NAME}
                 title={APP_NAME}
                 style={{ maxWidth: 160 }}
                 className="mr-2"
               />
             </Link>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-              quasi perferendis ratione perspiciatis accusantium.
+            <p className="mt-2">
+              <FontAwesomeIcon icon={["fas", "map-marker-alt"]} />{" "}Colonia del Sacramento,
+              Uruguay.
             </p>
           </div>
           <div className="col-md text-md-center mt-4">
             <ul className="list-unstyled nav-links">
               <li>
-                <a href="/">Política de privacidad</a>
+                <a href="/">Políticas de privacidad</a>
               </li>
               <li>
                 <a href="/">Términos y condiciones</a>
@@ -36,12 +36,11 @@ export const Footer = () => {
           <div className="col-md text-md-center mt-4">
             <ul className="social list-unstyled">
               <li>
-                <a href="/">
-                  <FontAwesomeIcon icon={["fab", "facebook-f"]} />
-                </a>
-              </li>
-              <li>
-                <a href="/">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://instagram.com/marinadelaquintana"
+                >
                   <FontAwesomeIcon icon={["fab", "instagram"]} />{" "}
                 </a>
               </li>
@@ -66,3 +65,4 @@ export const Footer = () => {
     </>
   );
 };
+

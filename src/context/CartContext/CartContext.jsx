@@ -1,18 +1,14 @@
-import { SHOW_TOAST } from "../../utilidades/const";
+import firebase from "firebase/app";
 import React, { useEffect, useState } from "react";
-import { DATA, CATEGORIES } from "../../utilidades/const";
-import { Spinner } from "react-bootstrap";
+import { updateStock } from "../../firebase/client";
+import { showTimerMessage } from "../../utilidades/helper";
 
-export const CartContext = React.createContext([[], () => {}]);
+export const CartContext = React.createContext();
 
-export const CartProvider = ({ defaultValue = [], children }) => {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartSize, setCartSize] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-  const [msj, setMsj] = useState(null);
-  const [error, setError] = useState(null);
 
   function getFrom(id) {
     return cart.find((p) => p.product.id === id);
@@ -40,17 +36,17 @@ export const CartProvider = ({ defaultValue = [], children }) => {
           if (update) cart[i].qty = qty;
           else if (cart[i].qty + qty <= cart[i].product.stock) {
             cart[i].qty += qty;
-            setMsj(
-              "El producto ya estaba en el carrito. La cantidad del mismo ha sido actualizada."
+            showTimerMessage(
+              `😎 El producto ya estaba en el carrito. La cantidad del mismo ha sido actualizada.`,
+              "info"
             );
-            hideMsj();
           } else {
-            setError(
-              `El stock disponible es ${
+            showTimerMessage(
+              `😱 El stock disponible es ${
                 cart[i].product.stock - cart[i].qty
-              }. Ingresá una cantidad menor.`
+              }. Ingresá una cantidad menor.`,
+              "error"
             );
-            hideMsj();
             return;
           }
           break;
@@ -68,13 +64,6 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     }
   }
 
-  function hideMsj() {
-    setTimeout(() => {
-      setMsj(null);
-      setError(null);
-    }, SHOW_TOAST + 100);
-  }
-
   function removeItem(id) {
     let aux = cart.filter(function (obj) {
       return obj.product.id !== id;
@@ -89,6 +78,23 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     setCartTotal(0);
   }
 
+  const createOrder = (email, name, phone) => {
+    const order = {
+      buyer: { email: email, name: name, phone: phone },
+      detail: cart.map((element) => ({
+        idProduct: element.product.id,
+        title: element.product.title,
+        qty: element.qty,
+      })),
+      ts_created: firebase.firestore.Timestamp.fromDate(new Date()),
+      totalItems: cartSize,
+      total: cartTotal,
+    };
+    updateStock(order).then((response) => {
+      if (response === "ok") clear();
+    });
+  };
+
   useEffect(() => {
     const localCart = localStorage.getItem("cart");
     if (!localCart) localStorage.setItem("cart", JSON.stringify([]));
@@ -96,23 +102,6 @@ export const CartProvider = ({ defaultValue = [], children }) => {
       updateCart(JSON.parse(localCart));
       setCart(JSON.parse(localCart));
     }
-
-    const getCategories = async () => {
-      const response = await fetch(`${CATEGORIES}`);
-      let p = await response.json();
-      setTimeout(() => {
-        setCategories(p);
-      }, 1000);
-    };
-    getCategories();
-    const getProducts = async () => {
-      const response = await fetch(`${DATA}`);
-      let p = await response.json();
-      setTimeout(() => {
-        setProducts(p);
-      }, 1000);
-    };
-    getProducts();
   }, []);
 
   useEffect(() => {
@@ -122,25 +111,16 @@ export const CartProvider = ({ defaultValue = [], children }) => {
   return (
     <CartContext.Provider
       value={{
-        products,
-        categories,
         cart,
         cartSize,
         cartTotal,
-        msj,
-        error,
         addItem,
         removeItem,
         clear,
+        createOrder,
       }}
     >
-      {products.length > 0 && categories.length > 0 ? (
-        children
-      ) : (
-        <div className="mt-5 d-flex justify-content-center">
-          <Spinner align="center" animation="border" variant="info" />
-        </div>
-      )}{" "}
+      {children}{" "}
     </CartContext.Provider>
   );
 };

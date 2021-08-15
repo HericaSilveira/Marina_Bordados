@@ -1,9 +1,15 @@
-import { useContext } from "react";
+import { useEffect, useState } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
-import { CartContext } from "../../context/CartContext/CartContext";
+import { getCategories } from "../../firebase/client";
 
 
 export const NavBarContainer = () => {
-  const { categories } = useContext(CartContext);
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const waitForData = async () => {
+      setCategories(await getCategories());
+    };
+    waitForData();
+  }, []);
   return <NavBar categories={categories} />;
 };
