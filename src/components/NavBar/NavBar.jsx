@@ -13,7 +13,7 @@ export const NavBar = ({ categories }) => {
             src={"/assets/logo.png"}
             alt={APP_NAME}
             title={APP_NAME}
-            style={{ maxWidth: 119 }}
+            style={{ maxWidth: 200 }}
             className="mr-2"
           />
         </Link>

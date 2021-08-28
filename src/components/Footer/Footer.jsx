@@ -11,15 +11,15 @@ export const Footer = () => {
           <div className="col-md-4 pr-md-5">
             <Link to={"/"} style={{ textDecoration: "none" }}>
               <img
-                src={"/assets/logo.png"}
+                src={"/assets/logo-footer.png"}
                 alt={APP_NAME}
                 title={APP_NAME}
-                style={{ maxWidth: 160 }}
+                style={{ maxWidth: 140 }}
                 className="mr-2"
               />
             </Link>
             <p className="mt-2">
-              <FontAwesomeIcon icon={["fas", "map-marker-alt"]} />{" "}Colonia del Sacramento,
+              <FontAwesomeIcon icon={["fas", "map-marker-alt"]} />{" "}Colonia,
               Uruguay.
             </p>
           </div>
@@ -42,6 +42,15 @@ export const Footer = () => {
                   href="https://instagram.com/marinadelaquintana"
                 >
                   <FontAwesomeIcon icon={["fab", "instagram"]} />{" "}
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://api.whatsapp.com/send?phone=59899091793"
+                >
+                  <FontAwesomeIcon icon={["fab", "whatsapp"]} />{" "}
                 </a>
               </li>
             </ul>

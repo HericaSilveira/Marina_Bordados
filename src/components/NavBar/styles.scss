@@ -1,11 +1,11 @@
 @import "../../App.scss";
 .navbar {
-    background-color: $base-navbar;
+    background-color: #777;
 }
 
 .nav-link {
     &:hover {
-        color: $base-background !important;
+        color: #fff !important;
     }
 }
 

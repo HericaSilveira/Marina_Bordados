@@ -80,7 +80,7 @@ export const ItemDetail = ({ product }) => {
                       <Link to={"/"} style={{ textDecoration: "none" }}>
                         <ButtonComponent
                           text={`Seguir comprando`}
-                          variant="outline-light"
+                          variant="outline-dark"
                           icon={
                             <FontAwesomeIcon
                               icon={"shopping-cart"}
@@ -95,7 +95,7 @@ export const ItemDetail = ({ product }) => {
                       <Link to={"/cart"} style={{ textDecoration: "none" }}>
                         <ButtonComponent
                           text={`Terminar mi compra`}
-                          variant="success"
+                          variant="dark"
                           icon={
                             <FontAwesomeIcon
                               icon={"dollar-sign"}

@@ -64,7 +64,7 @@ export const CheckoutForm = () => {
           <Form.Label>Teléfono</Form.Label>
           <Form.Control
             type="text"
-            placeholder="1112345678"
+            placeholder="123456789"
             onInput={(e) => setForm({ ...form, phone: e.target.value })}
           />
         </Form.Group>
@@ -72,7 +72,7 @@ export const CheckoutForm = () => {
           <ButtonComponent
             text="Confirmar"
             style={{ height: "100%" }}
-            variant="success"
+            variant="dark"
             icon={
               <FontAwesomeIcon icon={"cart-plus"} title="Confirmar carrito" />
             }

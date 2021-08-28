@@ -22,7 +22,7 @@ export const ItemCheckout = React.memo(
             <Row>
               <Col>
                 <h5 className="mb-0">{product.title}</h5>
-                <p style={{ fontSize: 11 }}>
+                <p style={{ fontSize: 15 }}>
                   {remainingStock === 0
                     ? "Sin stock extra disponible."
                     : remainingStock === 1
@@ -38,7 +38,7 @@ export const ItemCheckout = React.memo(
             </Row>
             <Row>
               <Col>
-                <h6 className="mt-1" style={{ fontWeight: 300, fontSize: 14 }}>
+                <h6 className="mt-1" style={{ fontWeight: 300, fontSize: 20 }}>
                   {accounting.formatMoney(product.price, "$")} x un.
                 </h6>{" "}
                 <h6 style={{ fontSize: 17 }}>

@@ -12,7 +12,7 @@ export const Item = ({ product }) => {
   return (
     <Link
       to={`/item/${product.id}`}
-      style={{ color: "#fff", textDecoration: "none" }}
+      style={{ color: "#000", textDecoration: "none" }}
     >
       <>
         <Container className="item mb-3">
@@ -25,7 +25,7 @@ export const Item = ({ product }) => {
                 </Badge>
               )}
               {product.stock === 0 && (
-                <Badge className="itemBadge" variant="dark">
+                <Badge className="itemBadge" variant="warning">
                   Sin stock
                 </Badge>
               )}{" "}

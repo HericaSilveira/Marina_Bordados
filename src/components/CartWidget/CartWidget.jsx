@@ -39,22 +39,22 @@ export const CartWidget = () => {
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdownMenu">
           <Dropdown.Item>
-            <strong>Carrito de compras</strong>
+          <strong>Carrito de compras</strong>
           </Dropdown.Item>
-          {cartSize === 0 && <Dropdown.Item>Sin productos</Dropdown.Item>}
+          {cartSize === 0 && <Dropdown.Item>Aún no tenés productos en tu carrito</Dropdown.Item>}
           {cartSize !== 0 && cart.map((element, index) => {
             return (
               <Dropdown.Item key={index}>
                 <Row>
                   <Col>{element.product.title}</Col>
-                  <Col align="right">{element.qty}</Col>
+                  <Col align="center">{element.qty}</Col>
                 </Row>
               </Dropdown.Item>
             );
           })}
           <Dropdown.Divider />
           <Dropdown.Item to={`/cart`} as={Link}>
-            <ButtonComponent text="Ver carrito" variant="dark" block={true} />
+            <ButtonComponent text="Ver carrito" variant="light" block={true} />
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

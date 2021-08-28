@@ -120,7 +120,7 @@ export const ItemCounter = ({
             ) : (
               <ButtonComponent
                 text="Agregar"
-                variant="outline-primary"
+                variant="outline-dark"
                 icon={
                   <FontAwesomeIcon
                     icon={"cart-plus"}

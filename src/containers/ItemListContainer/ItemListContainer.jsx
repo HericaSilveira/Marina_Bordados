@@ -46,9 +46,9 @@ export const ItemListContainer = () => {
         <Row>
           <Col lg={3} className="categories d-none d-lg-block">
             <h5 className="mb-3">Categorías</h5>
-            <ul className=" list-unstyled nav-links">
+            <ul className="list-unstyled nav-links">
               <li>
-                <Link to={`/`} style={{ textDecoration: "none" }}>
+                <Link to={`/`} style={{ textDecoration: "none" }} className="text-dark">
                   Todos los productos{" "}
                 </Link>
               </li>
@@ -58,7 +58,7 @@ export const ItemListContainer = () => {
                     <Link
                       to={`/category/${cat.id}`}
                       style={{ textDecoration: "none" }}
-                    >
+                      className="text-dark">
                       {cat.name}
                     </Link>
                   </li>

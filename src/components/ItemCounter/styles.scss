@@ -4,25 +4,25 @@
         padding-left: 0rem;
         padding-right: 0rem;
     }
-    color: $base-navbar;
+    color: #000;
     text-align: center;
-    border-color: $base-navbar;
+    border-color:#777;
     background-color: inherit;
     &:focus {
-        border-color: $base-navbar;
-        color: $base-navbar;
-        background-color: inherit !important;
+        border-color: rgb(3, 3, 3);
+        color: rgb(5, 5, 5);
+        background-color: #000 !important;
     }
 }
 
 .modifyCounter {
-    border-color: $base-navbar;
-    background-color: inherit !important;
-    color: $base-navbar;
+    border-color: #777;
+    background-color: #777 !important;
+    color: rgb(10, 10, 10);
     width: 35px;
     &:disabled {
         border-color: $base-navbar !important;
         color: $base-navbar !important;
-        background-color: #3c1919 !important;
+        background-color: #0c0c0c !important;
     }
 }

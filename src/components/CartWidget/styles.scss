@@ -1,6 +1,6 @@
 @import "../../App.scss";
 .fa {
-    color: rgb(82, 80, 80);
+    color: rgb(0, 0, 0);
 }
 
 .dropdownMenu {
@@ -16,5 +16,5 @@
 .dropdown-item:hover {
     color: #000;
     text-decoration: none;
-    background-color: $base-background;
+    background-color: #fff;
 }

@@ -51,12 +51,12 @@ export const ItemCheckoutContainer = () => {
                   ]
                 : [
                     <Alert key={1} variant="warning" className={"d-block"}>
-                      No tenés productos agregados al carrito.
+                      Tu carrito de compras está vacío.
                     </Alert>,
                     <Link key={2} to={"/"} style={{ textDecoration: "none" }}>
                       <ButtonComponent
                         text={`Ir de compras`}
-                        variant="info"
+                        variant="dark"
                         icon={
                           <FontAwesomeIcon
                             icon={"shopping-cart"}
